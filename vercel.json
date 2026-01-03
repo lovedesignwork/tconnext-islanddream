@@ -1,0 +1,14 @@
+{
+  "crons": [
+    {
+      "path": "/api/op-report/auto-send",
+      "schedule": "0 * * * *"
+    }
+  ]
+}
+
+
+
+
+
+
