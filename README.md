@@ -51,52 +51,35 @@ cd tconnext
 npm install
 ```
 
-2. Copy the environment example file and configure:
+2. **Set up Supabase** - Follow the detailed guide:
 
-```bash
-cp .env.example .env.local
-```
+📖 **See [SUPABASE_SETUP.md](./SUPABASE_SETUP.md) for complete Supabase connection instructions**
 
-3. Set up your environment variables in `.env.local`:
+Quick summary:
+- Create a Supabase project
+- Copy `.env.example` to `.env.local`
+- Add your Supabase credentials
+- Run database migrations
+- Create storage buckets
+
+3. (Optional) Configure additional services:
 
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-JWT_SECRET=your-jwt-secret-at-least-32-chars-long
-
-# Optional
+# Email (using Resend)
 RESEND_API_KEY=your_resend_api_key
+
+# Stripe for payments
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_SECRET_KEY=sk_test_...
 ```
 
-4. Set up the database:
-   - Go to your Supabase project SQL Editor
-   - Run the migrations in order from `supabase/migrations/`
-   - Update `003_seed_data.sql` with your company info before running
-
-5. Create the master admin user:
-   - Create a user in Supabase Auth dashboard
-   - Run this SQL with the auth user ID:
-   ```sql
-   INSERT INTO users (auth_id, company_id, role, permissions, name, email)
-   VALUES (
-     'YOUR_AUTH_USER_ID',
-     '00000000-0000-0000-0000-000000000001',
-     'master_admin',
-     '{}',
-     'Admin Name',
-     'admin@yourcompany.com'
-   );
-   ```
-
-6. Run the development server:
+4. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-7. Open [http://localhost:3000](http://localhost:3000)
+5. Open [http://localhost:3000](http://localhost:3000)
 
 ## Project Structure
 
